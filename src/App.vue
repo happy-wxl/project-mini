@@ -1,13 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
-
+<script>
+    export default {
+        name:'app',
+        components:{},
+        data(){
+          return{
+            res:{}
+          }
+        },
+        mounted() {
+          // 本地加载请求静态json文件的形式
+          // this.axios.get('mock/user/login.json').then((res)=>{
+          //   this.res=res;
+          //   console.log(this.res)
+          // })
+          this.axios.get('/user/login').then((res)=>{
+               this.res=res;
+               console.log(this.res)
+             })
+        }
+    }
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
